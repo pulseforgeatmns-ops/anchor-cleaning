@@ -22,6 +22,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
+  html,body{overflow-x:hidden}
   body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.62;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
   h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.04;letter-spacing:0}
   a{color:inherit}
@@ -166,6 +167,131 @@
     .li-row{grid-template-columns:1fr;gap:6px}
     .foot{display:grid}
   }
+  /* V3 premium pass */
+  :root{
+    --hero:url("assets/anchor-hero-v3.jpg");
+    --cream:#F6F1E8;
+    --cream-soft:#FBF8F1;
+    --navy-deep:#07131F;
+    --gold:#C49A55;
+  }
+  body{background:var(--cream);color:#10202D}
+  header{position:absolute;top:0;left:0;right:0;background:linear-gradient(180deg,rgba(5,13,22,.56),rgba(5,13,22,0));border-bottom:0;backdrop-filter:none}
+  .mast{min-height:112px}
+  .wordmark{color:#fff}
+  .wordmark .mk{width:42px;height:42px}
+  .wordmark .mk path{stroke:var(--gold)}
+  .wordmark .mk circle{stroke:var(--gold)}
+  .wordmark .nm{font-size:28px;text-shadow:0 1px 14px rgba(0,0,0,.35)}
+  .wordmark .nm small{color:var(--gold);letter-spacing:.22em}
+  .nav-links{gap:38px;color:rgba(255,255,255,.82);font-size:14px}
+  .nav-links a:hover{color:#fff}
+  .mast-phone{color:rgba(255,255,255,.88);font-size:15px}
+  .mast-phone:hover{color:#fff}
+  .mast-cta,.btn-primary,.walk-form button{background:var(--gold);border-color:var(--gold);color:#08131F;min-height:56px;padding:16px 26px;border-radius:0;box-shadow:0 20px 40px rgba(0,0,0,.18)}
+  .mast-cta:hover,.btn-primary:hover,.walk-form button:hover{background:#D7AE68;border-color:#D7AE68;color:#08131F}
+  .hero{min-height:100svh;background:
+    linear-gradient(90deg,rgba(5,12,20,.82) 0%,rgba(5,12,20,.66) 31%,rgba(5,12,20,.18) 58%,rgba(5,12,20,.05) 100%),
+    linear-gradient(180deg,rgba(5,12,20,.38) 0%,rgba(5,12,20,.04) 38%,rgba(5,12,20,.50) 100%),
+    var(--hero) center/cover no-repeat;display:block;position:relative}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:170px;background:linear-gradient(0deg,var(--cream),rgba(246,241,232,0));pointer-events:none}
+  .hero-shell{display:block;min-height:100svh;padding-top:150px;padding-bottom:74px}
+  .hero-copy{max-width:760px;min-height:calc(100svh - 224px);padding:0;justify-content:flex-end;position:relative;z-index:1;color:#fff}
+  .hero-kicker{color:var(--gold);letter-spacing:.34em;margin-bottom:26px}
+  .hero h1{font-size:clamp(62px,8.6vw,132px);max-width:9.8ch;margin-bottom:28px;color:#fff;text-shadow:0 18px 60px rgba(0,0,0,.36)}
+  .hero h1 .li{display:block;color:#E3C48C;font-style:italic}
+  .hero .search-line{font-size:clamp(19px,1.7vw,25px);color:rgba(255,255,255,.92);max-width:34ch;margin-bottom:34px}
+  .lede{display:none}
+  .hero-ctas{gap:18px 28px}
+  .btn-phone{color:#fff;border-bottom-color:var(--gold)}
+  .hero-facts{grid-template-columns:repeat(4,auto);gap:42px;max-width:none;margin-top:70px;border-top:1px solid rgba(255,255,255,.28);padding-top:28px;color:#fff}
+  .hero-facts span{color:#E2C181}
+  .hero-facts b{color:#fff;font-family:'Inter',sans-serif;font-size:15px;font-weight:600}
+  .hero-media{display:none}
+  .standard{padding:148px 0 132px;background:var(--cream)}
+  .standard-grid{gap:92px}
+  .standard h2{font-size:clamp(44px,5.8vw,82px);max-width:9ch;margin-bottom:34px}
+  .standard-intro{font-size:18px;max-width:31ch}
+  .standard-pull{font-size:clamp(29px,3.5vw,48px);max-width:15ch;color:#14283A;border-top-color:var(--gold)}
+  .entries{border-top-color:#14283A}
+  .entry{grid-template-columns:104px 1fr;padding:38px 0}
+  .entry .num{color:var(--gold);font-size:42px}
+  .entry .et{font-size:31px}
+  .entry .ed{font-size:16px;max-width:42ch}
+  .for{padding:124px 0;background:#0A1723;color:var(--cream)}
+  .for .doc{max-width:1320px}
+  .for .lbl,.for .eyebrow{color:var(--gold)}
+  .for h2{font-size:clamp(40px,5.2vw,76px);max-width:13ch;margin:18px 0 54px;color:#fff}
+  .industry-intro{max-width:45ch;color:#C9D0D3;font-size:17px;margin:-30px 0 64px}
+  .industry-grid{display:grid;grid-template-columns:1fr;gap:22px}
+  .industry-card{min-height:390px;display:grid;grid-template-columns:minmax(260px,.54fr) minmax(320px,.46fr);align-items:end;background-image:linear-gradient(90deg,rgba(5,12,20,.82),rgba(5,12,20,.34),rgba(5,12,20,.06)),var(--img);background-size:cover;background-position:center;color:#fff;border-top:1px solid rgba(255,255,255,.18);overflow:hidden}
+  .industry-card > div{padding:44px}
+  .industry-card .ref{color:var(--gold);margin-bottom:20px}
+  .industry-card h3{font-size:clamp(34px,4vw,58px);margin-bottom:18px;color:#fff}
+  .industry-card p{font-size:17px;max-width:33ch;color:rgba(255,255,255,.84)}
+  .note{margin-top:0;background:#F8F4EC;color:#10202D}
+  .note .doc{padding:124px 32px}
+  .about-panel{display:grid;grid-template-columns:minmax(280px,.72fr) minmax(0,1fr);gap:88px;align-items:center}
+  .about-mark{min-height:500px;background:linear-gradient(145deg,#07131F,#172839);display:grid;place-items:center;position:relative;overflow:hidden}
+  .about-mark::before{content:"";position:absolute;inset:34px;border:1px solid rgba(196,154,85,.34)}
+  .about-mark svg{width:170px;height:170px;position:relative;z-index:1}
+  .note .lbl{color:var(--gold);margin-bottom:22px}
+  .note h2{font-size:clamp(42px,5.2vw,78px);max-width:9ch;color:#10202D}
+  .note p{font-size:18px;max-width:44ch;color:#46535F}
+  .note .by{color:var(--gold);font-size:18px}
+  .contact{padding:126px 0 112px;background:var(--cream-soft)}
+  .contact-grid{display:grid;grid-template-columns:minmax(260px,.72fr) minmax(0,1fr);gap:90px;align-items:start}
+  .contact h2{font-size:clamp(42px,5.4vw,78px);max-width:10ch;margin:18px 0 28px}
+  .contact p{font-size:18px;color:#52606B;max-width:34ch}
+  .trust{display:grid;gap:12px;margin-top:34px;margin-bottom:0;color:#53606A;font-size:14px}
+  .trust span{white-space:normal}
+  .trust .dot{display:none}
+  .walk-form{max-width:none;background:#fff;padding:42px;border:1px solid #DED5C7;box-shadow:0 32px 80px rgba(17,31,43,.08);grid-template-columns:1fr 1fr;gap:20px}
+  .walk-form label{gap:10px;font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:#5A6066}
+  .walk-form input,.walk-form select{min-height:58px;background:#FBFAF6;border:1px solid #D9D1C2;padding:14px 16px;font-size:16px}
+  .walk-form button{justify-self:start;margin-top:6px}
+  .walk-form button,.form-status{grid-column:1/-1}
+  .contact-links{display:grid;gap:12px;margin-top:34px}
+  .close .em,.contact .em{font-family:'Fraunces',serif;font-size:clamp(22px,2vw,31px);text-decoration:none;border-bottom:2px solid var(--gold);padding-bottom:4px;display:inline-block;width:max-content}
+  footer{background:#08131F;border-top:0;color:#C7D0D8}
+  .foot .fm{color:#fff}
+  .foot a{border-bottom-color:var(--gold);color:#fff}
+  @media (max-width:980px){
+    header{position:absolute}
+    .mast{grid-template-columns:1fr auto;min-height:92px;padding:0}
+    .nav-links{display:none}
+    .mast-actions{gap:12px}
+    .hero-shell{padding-top:120px}
+    .hero-copy{min-height:calc(100svh - 182px)}
+    .hero-facts{grid-template-columns:repeat(2,1fr);gap:20px 34px}
+    .standard-grid,.about-panel,.contact-grid{grid-template-columns:1fr;gap:52px}
+    .industry-card{grid-template-columns:1fr;min-height:430px}
+  }
+  @media (max-width:760px){
+    .doc{padding:0 22px}
+    .mast{display:flex;align-items:center;justify-content:space-between;min-height:86px}
+    .wordmark .mk{width:34px;height:34px}
+    .wordmark .nm{font-size:22px}
+    .wordmark .nm small{font-size:8px;letter-spacing:.16em}
+    .mast-phone{display:none}
+    .mast-cta{display:none}
+    .hero{background-position:58% center}
+    .hero-shell{padding-top:112px;padding-bottom:46px}
+    .hero-copy{min-height:calc(100svh - 158px)}
+    .hero-kicker{letter-spacing:.2em;font-size:10px}
+    .hero h1{font-size:clamp(44px,14.5vw,58px);max-width:9.8ch}
+    .hero .search-line{font-size:18px;max-width:26ch}
+    .hero-facts{grid-template-columns:1fr 1fr;margin-top:52px;gap:18px;border-top-color:rgba(255,255,255,.22)}
+    .standard,.for,.note .doc,.contact{padding-top:84px;padding-bottom:78px}
+    .entry{grid-template-columns:1fr;gap:14px;padding:30px 0}
+    .entry .num{font-size:28px}
+    .entry .et{font-size:27px}
+    .industry-card{min-height:470px;background-image:linear-gradient(0deg,rgba(5,12,20,.84),rgba(5,12,20,.30)),var(--img);align-items:end}
+    .industry-card > div{padding:28px}
+    .about-mark{min-height:300px}
+    .walk-form{grid-template-columns:1fr;padding:26px}
+    .contact-links .em{width:auto}
+  }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCOWW1SO7N"></script>
@@ -198,7 +324,7 @@
       </nav>
       <div class="mast-actions">
         <a class="mast-phone js-phone" href="tel:+16034202430">(603) 420-2430</a>
-        <a href="#contact" class="mast-cta">Schedule a Walkthrough</a>
+        <a href="#contact" class="mast-cta">Schedule a Walkthrough &rarr;</a>
       </div>
     </div>
   </div>
@@ -208,28 +334,23 @@
   <div class="doc hero-shell">
     <div class="hero-copy">
       <div>
-        <div class="hero-kicker eyebrow rv">Commercial cleaning &middot; Greater Manchester, NH</div>
-        <h1 class="rv">A standing service for offices that <span class="li">can't have an off night.</span></h1>
-        <p class="search-line rv">Recurring office cleaning and janitorial service for professional workplaces that need the same standard to hold after every visit.</p>
+        <div class="hero-kicker eyebrow rv">Cleaner spaces. Stronger businesses.</div>
+        <h1 class="rv">Commercial cleaning that <span class="li">reflects your standards.</span></h1>
+        <p class="search-line rv">A standing service for offices that can't have an off night.</p>
         <div class="lede">
           <div class="meas rv">Built for law firms, accounting practices, medical offices, and professional teams that want the cleaning handled without another management chore.</div>
           <div class="proof-note rv">The same checklist, the same expected result, and one accountable owner watching the work so your team can stop tracking it.</div>
         </div>
         <div class="hero-ctas rv">
-          <a class="btn-primary" href="#contact">Schedule a Walkthrough</a>
+          <a class="btn-primary" href="#contact">Schedule a Walkthrough &rarr;</a>
           <a class="btn-phone js-phone" href="tel:+16034202430">Call/Text (603) 420-2430</a>
         </div>
       </div>
       <div class="hero-facts rv" aria-label="Service highlights">
-        <div><span>Service type</span><b>Recurring commercial</b></div>
-        <div><span>Rhythm</span><b>Standing schedule</b></div>
-        <div><span>Coverage</span><b>Manchester area</b></div>
-      </div>
-    </div>
-    <div class="hero-media rv" role="img" aria-label="Bright professional office interior after hours">
-      <div class="media-caption">
-        <span>Standing service</span>
-        <p>Set the standard once. Let the week run.</p>
+        <div><span>01</span><b>Fully insured</b></div>
+        <div><span>02</span><b>Locally owned</b></div>
+        <div><span>03</span><b>Recurring service</b></div>
+        <div><span>04</span><b>Detail focused</b></div>
       </div>
     </div>
   </div>
@@ -247,73 +368,99 @@
         <div class="num">01</div>
         <div>
           <div class="et">Defined standards</div>
-          <div class="ed">We establish what good looks like for your space before recurring service begins, then keep the work tied to that documented expectation.</div>
+          <div class="ed">We establish what good looks like before recurring service begins.</div>
         </div>
       </div>
       <div class="entry rv">
         <div class="num">02</div>
         <div>
           <div class="et">Dependable rhythm</div>
-          <div class="ed">Your workplace is maintained on an agreed schedule without constant coordination, missed-night chasing, or weekly re-explaining.</div>
+          <div class="ed">Your workplace is maintained on a standing schedule without weekly re-explaining.</div>
         </div>
       </div>
       <div class="entry rv">
         <div class="num">03</div>
         <div>
           <div class="et">Quality control</div>
-          <div class="ed">Details are checked against the standard instead of relying on memory or assumption. <b>The drift is the failure mode, so we watch for it.</b></div>
+          <div class="ed">Details are checked against the standard before small misses become drift.</div>
         </div>
       </div>
       <div class="entry rv">
         <div class="num">04</div>
         <div>
           <div class="et">Clear accountability</div>
-          <div class="ed">You deal with the owner, not a call center. If something needs attention, you know exactly who owns it.</div>
+          <div class="ed">You deal with the owner, so anything that needs attention has an owner.</div>
         </div>
       </div>
     </div>
   </div>
   </section>
   <section class="for" id="industries">
-    <div class="lbl rv">Who this is for</div>
-    <h2 class="rv">Offices where reliability isn't a nice-to-have.</h2>
-    <div class="ledger rv">
-      <div class="li-row">
-        <div class="lh">Law firms</div>
-        <div class="lb">Confidential files, after-hours access, a presentable front for clients. Handled with discretion and a consistent hand.</div>
-      </div>
-      <div class="li-row">
-        <div class="lh">Accounting &amp; CPA practices</div>
-        <div class="lb">Especially through the seasons when the office runs long and a single missed night is the one you can't afford.</div>
-      </div>
-      <div class="li-row">
-        <div class="lh">Professional offices</div>
-        <div class="lb">Small and mid-size workplaces that want a vendor they set up once and never have to chase again.</div>
+    <div class="doc">
+      <div class="lbl rv">Industries</div>
+      <h2 class="rv">Professional offices where consistency shows.</h2>
+      <p class="industry-intro rv">Anchor is built for recurring commercial cleaning in workplaces where clients, patients, tenants, and teams read the room before a word is said.</p>
+      <div class="industry-grid">
+        <article class="industry-card rv" style="--img:url('https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&w=1800&q=82')">
+          <div>
+            <div class="ref">Law firms</div>
+            <h3>Discretion, order, and a polished front.</h3>
+            <p>Reception, conference rooms, private offices, and common areas maintained without adding friction to the workday.</p>
+          </div>
+        </article>
+        <article class="industry-card rv" style="--img:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1800&q=82')">
+          <div>
+            <div class="ref">CPA &amp; professional offices</div>
+            <h3>Ready when the office runs long.</h3>
+            <p>Recurring service for firms that need the same dependable baseline through busy seasons and normal weeks.</p>
+          </div>
+        </article>
+        <article class="industry-card rv" style="--img:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=82')">
+          <div>
+            <div class="ref">Medical and managed spaces</div>
+            <h3>The standard is visible before anyone asks.</h3>
+            <p>Waiting areas, suites, tenant common spaces, and office environments cared for with a steady, documented rhythm.</p>
+          </div>
+        </article>
       </div>
     </div>
   </section>
 <section class="note" id="about">
-  <div class="doc railed">
-    <div class="node" data-tick="On the name">
+  <div class="doc about-panel">
+    <div class="about-mark rv" aria-hidden="true">
+      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="7" r="3.4" stroke="#C49A55" stroke-width="1.7"/>
+        <path d="M16 10.4V28" stroke="#C49A55" stroke-width="1.7" stroke-linecap="round"/>
+        <path d="M9 17H23" stroke="#C49A55" stroke-width="1.7" stroke-linecap="round"/>
+        <path d="M6 19C6 24 10.5 27.5 16 27.5C21.5 27.5 26 24 26 19" stroke="#C49A55" stroke-width="1.7" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div>
       <div class="lbl rv">Why "Anchor"</div>
-      <h2 class="rv">An anchor's only job is to hold. So is mine.</h2>
-      <p class="rv">I spent more than a decade running restaurants and a service company before this. The thing that separates an operation you can rely on from one you can't was never the work itself. It was whether someone stayed accountable when the easy move was to let the standard slip.</p>
-      <p class="rv">That's what I'm actually selling. A clean office is just the evidence that someone held the line.</p>
+      <h2 class="rv">An anchor's only job is to hold.</h2>
+      <p class="rv">I spent more than a decade running restaurants and a service company before this. The difference between an operation you can rely on and one you cannot is whether someone stays accountable when the standard starts to slip.</p>
+      <p class="rv">That's what Anchor sells. A clean office is the evidence that someone held the line.</p>
       <div class="by rv">&mdash; Jacob, owner</div>
     </div>
   </div>
 </section>
-<div class="doc railed">
-  <section class="close node" id="contact" data-tick="Next">
-    <div class="lbl rv">Get started</div>
-    <h2 class="rv">Schedule a walkthrough. Ten minutes.</h2>
-    <p class="rv">Tell me a little about your facility and we'll set a quick walkthrough. You'll get a clear flat monthly quote, no surprises, and no long contract to begin.</p>
+<section class="contact" id="contact">
+  <div class="doc contact-grid">
+    <div>
+      <div class="lbl rv">Next</div>
+      <h2 class="rv">Schedule a walkthrough.</h2>
+      <p class="rv">Tell me about your facility and we will set a quick walkthrough. You will get a clear monthly quote and a service plan that fits the space.</p>
     <div class="trust rv" aria-label="Service notes">
       <span>Insured service</span><span class="dot" aria-hidden="true">·</span>
       <span>Recurring office cleaning</span><span class="dot" aria-hidden="true">·</span>
       <span>Clear monthly quotes</span><span class="dot" aria-hidden="true">·</span>
       <span>Same standard every visit</span><span class="dot" aria-hidden="true">·</span>
       <span>Greater Manchester, NH</span>
+    </div>
+      <div class="contact-links rv">
+        <a class="em js-email" href="mailto:jacob@goanchorcleaning.com?subject=Walkthrough%20request%20%E2%80%94%20office%20cleaning">jacob@goanchorcleaning.com</a>
+        <a class="em js-phone" href="tel:+16034202430">(603) 420-2430</a>
+      </div>
     </div>
     <form class="walk-form rv" id="walkthrough-form" novalidate>
       <label>Name
@@ -348,13 +495,8 @@
       <button type="submit">Schedule a Walkthrough</button>
       <div class="form-status" id="form-status" role="status"></div>
     </form>
-    <div class="contacts rv">
-      <a class="em js-email" href="mailto:jacob@goanchorcleaning.com?subject=Facilities%20assessment%20request%20%E2%80%94%20office%20cleaning">jacob@goanchorcleaning.com</a>
-      <a class="em js-phone" href="tel:+16034202430">(603) 420-2430</a>
-    </div>
-    <div class="sub rv">Greater Manchester, New Hampshire &middot; commercial office cleaning &amp; janitorial service</div>
-  </section>
-</div>
+  </div>
+</section>
 </main>
 <footer>
   <div class="doc">
@@ -420,7 +562,7 @@
   var form = document.getElementById('walkthrough-form');
   var statusEl = document.getElementById('form-status');
   var ENDPOINT = 'https://pulseforge-leadgen-production.up.railway.app/api/public/walkthrough';
-  var SUCCESS = "Thanks. I'll reach out to set up a quick facilities assessment and give you a clear monthly quote.";
+  var SUCCESS = "Thanks. I'll reach out to schedule a quick walkthrough and give you a clear monthly quote.";
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -459,7 +601,7 @@
       statusEl.className = 'form-status ok';
       statusEl.textContent = (json && json.message) || SUCCESS;
     }).catch(function () {
-      var subject = encodeURIComponent('Facilities assessment request — office cleaning');
+      var subject = encodeURIComponent('Walkthrough request — office cleaning');
       var body = encodeURIComponent(
         'Name: ' + data.name + '\nBusiness: ' + data.business_name +
         '\nPhone: ' + data.phone + '\nEmail: ' + data.email +
