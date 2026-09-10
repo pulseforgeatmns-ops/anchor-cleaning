@@ -410,6 +410,48 @@
     .contact-links{margin-top:26px}
     .walk-form{padding:24px;border-radius:14px;gap:22px}
   }
+  /* SPEC-AC-022 micro-interaction polish */
+  :root{--anchor-ease:cubic-bezier(.22,.61,.36,1)}
+  .mast-cta,.btn-primary,.walk-form button{
+    --mx:0px;--my:0px;--lift:0px;--btn-scale:1;
+    border-radius:12px;
+    cursor:pointer;
+    transform:translate3d(var(--mx),calc(var(--my) + var(--lift)),0) scale(var(--btn-scale));
+    transition:transform 220ms var(--anchor-ease),box-shadow 220ms var(--anchor-ease),filter 220ms var(--anchor-ease),background-color 220ms var(--anchor-ease),border-color 220ms var(--anchor-ease);
+    will-change:transform,filter;
+  }
+  .mast-cta:hover,.btn-primary:hover,.walk-form button:hover{
+    --lift:-2px;--btn-scale:1.01;
+    background:var(--gold);
+    border-color:var(--gold);
+    color:#08131F;
+    filter:brightness(1.07);
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+  }
+  .mast-cta:active,.btn-primary:active,.walk-form button:active{filter:brightness(.95);--btn-scale:.99}
+  .mast-cta.is-pulsing,.btn-primary.is-pulsing,.walk-form button.is-pulsing{animation:anchorPulse 640ms var(--anchor-ease) 1}
+  @keyframes anchorPulse{
+    0%,100%{transform:translate3d(var(--mx),calc(var(--my) + var(--lift)),0) scale(var(--btn-scale))}
+    45%{transform:translate3d(var(--mx),calc(var(--my) + var(--lift)),0) scale(1.01)}
+  }
+  .nav-links a::after{transform-origin:center;transition:transform 180ms var(--anchor-ease)}
+  .walk-form{transition:transform 250ms ease,box-shadow 250ms ease,border-color 250ms ease}
+  .walk-form:hover{transform:translateY(-2px);box-shadow:0 24px 70px rgba(0,0,0,.18);border-color:rgba(255,255,255,.12)}
+  .walk-form label:not(.hp)::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);
+    transform:scaleX(0);transform-origin:left;transition:transform 200ms var(--anchor-ease);pointer-events:none;
+  }
+  .walk-form label:focus-within::after{transform:scaleX(1)}
+  .walk-form input:hover,.walk-form select:hover{border-bottom-color:rgba(255,255,255,.49)}
+  .js-ready .rv{opacity:0;transform:translateY(24px);transition:opacity 700ms var(--anchor-ease),transform 700ms var(--anchor-ease)}
+  .js-ready h1.rv,.js-ready h2.rv,.js-ready h3.rv,.js-ready .standard-pull.rv,.js-ready .editorial-break p.rv{transform:translateY(12px)}
+  .js-ready .rv.in{opacity:1;transform:none}
+  .industry-card,.about-photo,.editorial-break,.hero{transition:background-size 500ms var(--anchor-ease),filter 500ms var(--anchor-ease)}
+  .industry-card:hover,.about-photo:hover,.editorial-break:hover{filter:brightness(1.025)}
+  @media (prefers-reduced-motion:reduce){
+    .mast-cta,.btn-primary,.walk-form button,.walk-form,.industry-card,.about-photo,.editorial-break,.hero{transition:none;animation:none;transform:none}
+    .mast-cta,.btn-primary,.walk-form button{--mx:0px;--my:0px;--lift:0px;--btn-scale:1}
+  }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCOWW1SO7N"></script>
@@ -742,6 +784,45 @@
     });
   });
 
+  (function initMicroInteractions() {
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('.mast-cta, .btn-primary, .walk-form button'));
+    if (!reduceMotion) {
+      buttons.forEach(function (button) {
+        button.addEventListener('pointermove', function (event) {
+          var rect = button.getBoundingClientRect();
+          var x = event.clientX - rect.left - rect.width / 2;
+          var y = event.clientY - rect.top - rect.height / 2;
+          button.style.setProperty('--mx', (x / rect.width * 10).toFixed(2) + 'px');
+          button.style.setProperty('--my', (y / rect.height * 10).toFixed(2) + 'px');
+        });
+        button.addEventListener('pointerleave', function () {
+          button.style.setProperty('--mx', '0px');
+          button.style.setProperty('--my', '0px');
+        });
+      });
+
+      var lastActivity = Date.now();
+      function markActivity() { lastActivity = Date.now(); }
+      ['pointermove', 'pointerdown', 'keydown', 'scroll', 'touchstart'].forEach(function (eventName) {
+        window.addEventListener(eventName, markActivity, { passive: true });
+      });
+      window.setInterval(function () {
+        if (Date.now() - lastActivity < 13000) return;
+        var target = buttons.find(function (button) {
+          var rect = button.getBoundingClientRect();
+          return rect.width && rect.height && rect.bottom > 0 && rect.top < window.innerHeight;
+        });
+        if (!target) return;
+        target.classList.remove('is-pulsing');
+        void target.offsetWidth;
+        target.classList.add('is-pulsing');
+        window.setTimeout(function () { target.classList.remove('is-pulsing'); }, 720);
+        lastActivity = Date.now();
+      }, 3000);
+    }
+  })();
+
   document.documentElement.classList.add('js-ready');
   var els = document.querySelectorAll('.rv');
   var io = new IntersectionObserver(function (entries) {
@@ -753,7 +834,7 @@
     });
   }, { threshold: 0.1 });
   els.forEach(function (el, i) {
-    el.style.transitionDelay = (Math.min(i, 5) * 0.05) + 's';
+    el.style.transitionDelay = (Math.min(i, 5) * 0.08) + 's';
     io.observe(el);
   });
   window.addEventListener('load', function () {
