@@ -375,6 +375,41 @@
     .consult-steps span{grid-template-columns:34px 1fr}
     .walk-form{gap:24px}
   }
+  /* SPEC-AC-021 final conversion refinement */
+  .contact .doc{max-width:1440px}
+  .contact-grid{grid-template-columns:minmax(360px,480px) minmax(620px,1fr);gap:clamp(190px,12vw,240px)}
+  .contact h2{font-size:clamp(54px,6.5vw,102px);line-height:.91;max-width:7.4ch;margin:16px 0 8px}
+  .contact p{max-width:34ch}
+  .consult-steps{margin-top:34px}
+  .contact-links{margin-top:28px}
+  .walk-form{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:32px;gap:26px 30px;margin-top:-52px}
+  .walk-form label{position:relative}
+  .walk-form input,.walk-form select{min-height:66px;border-bottom-color:rgba(255,255,255,.32)}
+  .walk-form select{
+    appearance:none;
+    -webkit-appearance:none;
+    padding-right:34px;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23C49A55' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 8px center;
+    background-size:18px 18px;
+  }
+  .walk-form button{margin-top:2px;align-self:start}
+  @media (max-width:1180px){
+    .contact-grid{grid-template-columns:minmax(330px,.7fr) minmax(520px,1fr);gap:120px}
+    .contact h2{font-size:clamp(52px,6.4vw,88px)}
+  }
+  @media (max-width:980px){
+    .contact .doc{max-width:1240px}
+    .contact-grid{grid-template-columns:1fr;gap:56px}
+    .walk-form{margin-top:0}
+  }
+  @media (max-width:760px){
+    .contact h2{font-size:clamp(46px,13vw,62px);max-width:8ch;line-height:.95;margin-bottom:14px}
+    .consult-steps{margin-top:30px}
+    .contact-links{margin-top:26px}
+    .walk-form{padding:24px;border-radius:14px;gap:22px}
+  }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCOWW1SO7N"></script>
@@ -530,7 +565,7 @@
     <div>
       <div class="lbl rv">Next</div>
       <h2 class="rv">Schedule a walkthrough.</h2>
-      <p class="rv">We will visit your workplace, understand the standard you expect, and prepare a fixed monthly proposal for recurring service.</p>
+      <p class="rv">We'll visit your workplace, understand your cleaning standards, and prepare a fixed monthly proposal tailored to your schedule.</p>
       <div class="consult-steps rv" aria-label="Walkthrough details">
         <span><b>01</b>Walkthroughs take about ten minutes.</span>
         <span><b>02</b>No obligation, pressure, or open-ended contract.</span>
@@ -578,7 +613,7 @@
       <label class="hp" aria-hidden="true">Company website
         <input type="text" name="company_website" tabindex="-1" autocomplete="off">
       </label>
-      <button type="submit">Schedule a Walkthrough</button>
+      <button type="submit">Schedule My Walkthrough</button>
       <div class="form-status" id="form-status" role="status"></div>
     </form>
   </div>
