@@ -292,6 +292,89 @@
     .walk-form{grid-template-columns:1fr;padding:26px}
     .contact-links .em{width:auto}
   }
+  /* SPEC-251 editorial finish */
+  .standard{padding:176px 0 164px}
+  .standard-grid{align-items:start}
+  .standard-intro{margin-bottom:58px;line-height:1.8}
+  .standard-pull{padding-top:40px}
+  .entries{border-top:0}
+  .entry{grid-template-columns:140px 1fr;gap:42px;padding:58px 0;border-bottom:1px solid rgba(17,31,43,.22)}
+  .entry:first-child{padding-top:10px}
+  .entry .num{font-size:52px;color:#B99152}
+  .entry .et{font-size:clamp(34px,3.6vw,56px);margin-bottom:18px}
+  .entry .ed{font-size:18px;line-height:1.8;max-width:31ch}
+  .for{padding:150px 0 0}
+  .for h2{font-size:clamp(52px,6vw,96px);max-width:12ch;margin-bottom:34px}
+  .industry-intro{font-size:19px;line-height:1.8;max-width:38ch;margin:0 0 86px}
+  .industry-grid{gap:0;margin-left:calc((100vw - min(1320px,100vw)) / -2);margin-right:calc((100vw - min(1320px,100vw)) / -2)}
+  .industry-card{min-height:88svh;border-top:1px solid rgba(255,255,255,.16);background-image:linear-gradient(90deg,rgba(5,12,20,.88),rgba(5,12,20,.48) 38%,rgba(5,12,20,.06) 72%),var(--img)}
+  .industry-card:nth-child(even){background-image:linear-gradient(270deg,rgba(5,12,20,.88),rgba(5,12,20,.48) 38%,rgba(5,12,20,.06) 72%),var(--img)}
+  .industry-card:nth-child(even)>div{grid-column:2}
+  .industry-card > div{padding:8vw;align-self:center}
+  .industry-card .ref{font-size:12px;letter-spacing:.28em}
+  .industry-card h3{font-size:clamp(48px,6.4vw,100px);max-width:8.8ch}
+  .industry-card p{font-size:20px;line-height:1.75;max-width:28ch}
+  .editorial-break{min-height:100svh;background:
+    linear-gradient(90deg,rgba(5,12,20,.78),rgba(5,12,20,.20) 52%,rgba(5,12,20,.56)),
+    var(--hero) center/cover no-repeat;display:grid;align-items:center;color:#fff}
+  .editorial-break .doc{width:100%}
+  .editorial-break p{font-family:'Fraunces',Georgia,serif;font-size:clamp(54px,7.8vw,126px);line-height:.98;max-width:9.5ch;color:#fff;text-shadow:0 18px 60px rgba(0,0,0,.38)}
+  .note{background:#F6F1E8}
+  .note .doc{padding:164px 32px}
+  .about-panel{grid-template-columns:minmax(420px,.9fr) minmax(0,1fr);gap:112px}
+  .about-mark{display:none}
+  .about-photo{min-height:680px;background:
+    linear-gradient(180deg,rgba(6,18,30,.02),rgba(6,18,30,.18)),
+    url("https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1600&q=84") center/cover no-repeat}
+  .note h2{font-size:clamp(54px,6.2vw,96px);max-width:8.5ch;margin-bottom:38px}
+  .note p{font-size:20px;line-height:1.85;max-width:35ch}
+  .contact{padding:170px 0 150px;background:#08131F;color:#fff}
+  .contact-grid{grid-template-columns:minmax(330px,.62fr) minmax(0,1fr);gap:126px}
+  .contact .lbl{color:var(--gold)}
+  .contact h2{font-size:clamp(58px,7vw,108px);max-width:8.5ch;color:#fff}
+  .contact p{font-size:20px;line-height:1.82;color:#CBD4DB;max-width:31ch}
+  .consult-steps{display:grid;gap:22px;margin-top:58px;color:#D8DFE5;font-size:17px}
+  .consult-steps span{display:grid;grid-template-columns:42px 1fr;gap:18px;align-items:baseline}
+  .consult-steps b{font-family:'Fraunces',Georgia,serif;color:var(--gold);font-weight:500;font-size:24px}
+  .contact .trust{display:none}
+  .walk-form{background:transparent;border:0;box-shadow:none;padding:0;gap:34px;margin-top:14px}
+  .walk-form label{color:#D7DFE6;letter-spacing:.18em}
+  .walk-form input,.walk-form select{background:transparent;border:0;border-bottom:1px solid rgba(255,255,255,.34);color:#fff;min-height:68px;padding:12px 0;border-radius:0}
+  .walk-form input:focus,.walk-form select:focus{outline:0;border-color:var(--gold)}
+  .walk-form select option{color:#10202D}
+  .walk-form button{margin-top:18px;box-shadow:none}
+  .form-status{color:#D7DFE6}
+  .form-status.ok{color:#fff}
+  .contact-links{margin-top:58px}
+  .contact .em{color:#fff;border-bottom-color:rgba(196,154,85,.7)}
+  @media (max-width:980px){
+    .standard{padding:118px 0 104px}
+    .entry{grid-template-columns:96px 1fr;padding:42px 0}
+    .industry-grid{margin-left:-32px;margin-right:-32px}
+    .industry-card,.industry-card:nth-child(even){grid-template-columns:1fr;min-height:720px;background-image:linear-gradient(0deg,rgba(5,12,20,.88),rgba(5,12,20,.30)),var(--img)}
+    .industry-card:nth-child(even)>div{grid-column:auto}
+    .about-panel,.contact-grid{grid-template-columns:1fr;gap:64px}
+    .about-photo{min-height:480px}
+  }
+  @media (max-width:760px){
+    .standard,.for,.note .doc,.contact{padding-top:96px;padding-bottom:90px}
+    .standard-intro{margin-bottom:40px}
+    .entry{grid-template-columns:1fr;gap:16px;padding:36px 0}
+    .entry .num{font-size:30px}
+    .entry .et{font-size:34px}
+    .entry .ed{font-size:17px;max-width:28ch}
+    .industry-grid{margin-left:-22px;margin-right:-22px}
+    .industry-card{min-height:680px}
+    .industry-card > div{padding:38px 24px}
+    .industry-card h3{font-size:clamp(42px,14vw,62px)}
+    .industry-card p{font-size:18px}
+    .editorial-break p{font-size:clamp(50px,16vw,72px)}
+    .about-photo{min-height:360px}
+    .note h2,.contact h2{font-size:clamp(46px,14vw,68px)}
+    .note p,.contact p{font-size:18px}
+    .consult-steps span{grid-template-columns:34px 1fr}
+    .walk-form{gap:24px}
+  }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LCOWW1SO7N"></script>
@@ -425,16 +508,14 @@
       </div>
     </div>
   </section>
+<section class="editorial-break" aria-label="Reliability statement">
+  <div class="doc">
+    <p class="rv">Reliability becomes part of your workplace.</p>
+  </div>
+</section>
 <section class="note" id="about">
   <div class="doc about-panel">
-    <div class="about-mark rv" aria-hidden="true">
-      <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="16" cy="7" r="3.4" stroke="#C49A55" stroke-width="1.7"/>
-        <path d="M16 10.4V28" stroke="#C49A55" stroke-width="1.7" stroke-linecap="round"/>
-        <path d="M9 17H23" stroke="#C49A55" stroke-width="1.7" stroke-linecap="round"/>
-        <path d="M6 19C6 24 10.5 27.5 16 27.5C21.5 27.5 26 24 26 19" stroke="#C49A55" stroke-width="1.7" stroke-linecap="round"/>
-      </svg>
-    </div>
+    <div class="about-photo rv" role="img" aria-label="Quiet executive office interior with warm daylight"></div>
     <div>
       <div class="lbl rv">Why "Anchor"</div>
       <h2 class="rv">An anchor's only job is to hold.</h2>
@@ -449,7 +530,12 @@
     <div>
       <div class="lbl rv">Next</div>
       <h2 class="rv">Schedule a walkthrough.</h2>
-      <p class="rv">Tell me about your facility and we will set a quick walkthrough. You will get a clear monthly quote and a service plan that fits the space.</p>
+      <p class="rv">We will visit your workplace, understand the standard you expect, and prepare a fixed monthly proposal for recurring service.</p>
+      <div class="consult-steps rv" aria-label="Walkthrough details">
+        <span><b>01</b>Walkthroughs take about ten minutes.</span>
+        <span><b>02</b>No obligation, pressure, or open-ended contract.</span>
+        <span><b>03</b>The proposal is built around your space and schedule.</span>
+      </div>
     <div class="trust rv" aria-label="Service notes">
       <span>Insured service</span><span class="dot" aria-hidden="true">·</span>
       <span>Recurring office cleaning</span><span class="dot" aria-hidden="true">·</span>
