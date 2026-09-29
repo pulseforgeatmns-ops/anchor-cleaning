@@ -2,6 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<!-- Google tag (gtag.js): Google Ads and existing Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18463870847"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LCOWW1SO7N');
+  gtag('config', 'AW-18463870847');
+</script>
+<script src="/assets/google-ads.js?v=20260929"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="https://goanchorcleaning.com/assets/brand/favicon-v20260916.ico?v=20260916" sizes="any">
 <link rel="icon" type="image/svg+xml" href="https://goanchorcleaning.com/assets/brand/favicon-v20260916.svg?v=20260916">
@@ -546,15 +556,6 @@
   }
   @media (prefers-reduced-motion:reduce){.portal-mockup-frame{transition:none}}
 </style>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LCOWW1SO7N"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LCOWW1SO7N');
-</script>
 </head>
 <body>
 <header>
@@ -835,44 +836,12 @@
   </div>
 </footer>
 <script>
-  // Replace these IDs in Google Ads / GA4 before launching paid traffic.
-  // Leave blank until the accounts exist — events still fire on dataLayer.
-  window.ANCHOR_ANALYTICS = {
-    ga4: '',          // e.g. G-XXXXXXXXXX
-    ads: '',          // e.g. AW-XXXXXXXXXX
-    formConversion: '', // Google Ads conversion label for form submits
-    callConversion: ''  // Google Ads conversion label for click-to-call
-  };
-
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-
-  (function initTracking() {
-    const cfg = window.ANCHOR_ANALYTICS || {};
-    const ids = [cfg.ga4, cfg.ads].filter(function (id) {
-      return id && !/X{4,}/.test(id);
-    });
-    if (!ids.length) return;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(ids[0]);
-    document.head.appendChild(s);
-    gtag('js', new Date());
-    ids.forEach(function (id) { gtag('config', id); });
-  })();
-
   function track(eventName, params) {
     var payload = Object.assign({ event: eventName }, params || {});
     window.dataLayer.push(payload);
     if (typeof gtag === 'function') {
       gtag('event', eventName, params || {});
     }
-  }
-
-  function sendAdsConversion(label) {
-    var ads = window.ANCHOR_ANALYTICS && window.ANCHOR_ANALYTICS.ads;
-    if (!ads || !label || /X{4,}/.test(ads)) return;
-    gtag('event', 'conversion', { send_to: ads + '/' + label });
   }
 
   var ATTRIBUTION_STORAGE_KEY = 'anchor_first_party_attribution';
@@ -994,6 +963,7 @@
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var btn = form.querySelector('button[type="submit"]');
+    if (btn.disabled) return;
     var openAiLeadTracked = { value: false };
     var data = {
       name: form.name.value.trim(),
@@ -1021,13 +991,12 @@
     }).then(function (res) {
       if (res.status === 204) return { ok: true, message: SUCCESS };
       return res.json().then(function (json) {
-        if (!res.ok) throw new Error((json && json.error) || 'Could not send');
+        if (!res.ok || !json || json.ok !== true || !json.submission_id) throw new Error((json && json.error) || 'Could not send');
         return json;
       });
     }).then(function (json) {
-      track('walkthrough_form_submit', { event_category: 'lead' });
-      sendAdsConversion(window.ANCHOR_ANALYTICS.formConversion);
-      if (json && json.submission_id) {
+      trackAnchorLead(json, 'walkthrough_form_submit', { event_category: 'lead' });
+      if (json && json.ok === true && json.submission_id) {
         trackOpenAiLeadCreated(openAiLeadTracked, json.submission_id);
       }
       form.reset();
