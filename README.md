@@ -5,6 +5,13 @@ Production: https://goanchorcleaning.com/
 
 - `index.html`: commercial homepage and facility assessment form.
 - `residential/index.html`: residential page and quote form.
+- `thank-you.html`: confirmation page, served by GitHub Pages at `/thank-you`.
+  Successful residential submissions navigate here only after the API confirms
+  `ok: true` and a saved `submission_id`. Failed requests and 204 honeypot
+  responses never navigate. The residential success copy remains as fallback.
+  This page includes the existing Google tag for the Google Ads conversion rule
+  **URL starts with `goanchorcleaning.com/thank-you`**. Keep `formConversion`
+  disabled when using that URL-based action to avoid adding a second form event.
 - Each page loads the Google tag once in its `<head>`, configuring Google Ads
   `AW-18463870847` and the existing GA4 property `G-LCOWW1SO7N`.
 - `assets/google-ads.js`: shared conversion configuration and reporting.
