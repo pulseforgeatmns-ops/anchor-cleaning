@@ -1,0 +1,73 @@
+name: Deploy large-house proof asset
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy-proof:
+    if: github.event.head_commit.message != 'Deploy optimized large-house proof'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check whether fix is needed
+        id: check
+        shell: bash
+        run: |
+          if grep -q 'anchor-premium-bathroom.jpg' residential/index.html || [ ! -f assets/residential-work/anchor-large-house-proof.jpg ]; then
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Download source image
+        if: steps.check.outputs.needed == 'true'
+        shell: bash
+        run: |
+          curl -fL 'https://sdmntprcentralus.oaiusercontent.com/files/00000000-5508-81f5-8eb6-f3991a65923a/raw?se=2026-10-31T17%3A27%3A51Z&sp=r&sv=2026-02-06&sr=b&scid=34314248-b264-50f6-a63e-597bbd1e099d&skoid=d1cabc79-3240-4866-94fe-6005330cb49e&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-31T12%3A47%3A15Z&ske=2026-11-01T12%3A47%3A15Z&sks=b&skv=2026-02-06&sig=kM9T/mvNEYxNywmQwkk%2BGBdi50yj5/O/vZJVv0lFJr8%3D' -o /tmp/anchor-large-house-original.jpg
+      - name: Optimize image
+        if: steps.check.outputs.needed == 'true'
+        shell: bash
+        run: |
+          python -m pip install --quiet pillow
+          python - <<'PY'
+          from PIL import Image, ImageOps
+          from pathlib import Path
+          src=Path('/tmp/anchor-large-house-original.jpg')
+          out=Path('assets/residential-work/anchor-large-house-proof.jpg')
+          out.parent.mkdir(parents=True, exist_ok=True)
+          im=ImageOps.exif_transpose(Image.open(src)).convert('RGB')
+          w,h=im.size
+          r=16/9
+          if w/h > r:
+              nw=int(h*r); left=(w-nw)//2; im=im.crop((left,0,left+nw,h))
+          else:
+              nh=int(w/r); top=(h-nh)//2; im=im.crop((0,top,w,top+nh))
+          im=im.resize((1280,720), Image.Resampling.LANCZOS)
+          im.save(out,'JPEG',quality=78,optimize=True,progressive=True)
+          PY
+      - name: Update residential proof reference
+        if: steps.check.outputs.needed == 'true'
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('residential/index.html')
+          s=p.read_text()
+          s=s.replace('/assets/residential-work/anchor-premium-bathroom.jpg','/assets/residential-work/anchor-large-house-proof.jpg')
+          s=s.replace('width="720" height="410"','width="1280" height="720"')
+          s=s.replace('alt="Polished bathroom vanity after residential cleaning by Anchor Cleaning"','alt="Bright finished room in a large home after residential cleaning by Anchor Cleaning"')
+          s=s.replace('.work-proof-photo img{display:block;width:100%;height:auto}', '.work-proof-photo img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center;height:auto}')
+          p.write_text(s)
+          PY
+      - name: Commit deployed asset
+        if: steps.check.outputs.needed == 'true'
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add residential/index.html assets/residential-work/anchor-large-house-proof.jpg
+          git commit -m "Deploy optimized large-house proof"
+          git push
