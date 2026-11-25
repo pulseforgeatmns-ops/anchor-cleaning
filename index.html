@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<script>
+/* Preview safety guard: submissions never leave this preview. */
+document.addEventListener('submit', function (event) {
+  var form = event.target;
+  if (!(form instanceof HTMLFormElement)) return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  if (!form.checkValidity()) { form.reportValidity(); return; }
+  var status = form.querySelector('[role="status"], .form-status');
+  if (status) {
+    status.className = 'form-status';
+    status.textContent = 'Preview mode: submission disabled. No request was sent.';
+  }
+}, true);
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18463870847"></script>
 <script>
