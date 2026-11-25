@@ -175,6 +175,12 @@ document.addEventListener('submit', function (event) {
 @media(max-width:1000px){.hero.holiday-active .hero-inner{grid-template-columns:minmax(0,1fr) minmax(300px,.9fr);gap:20px}.hero.holiday-active h1{font-size:clamp(45px,5vw,70px)}.hero.holiday-active .holiday-overlay{padding:18px}}
 @media(max-width:700px){.hero.holiday-active .hero-inner{display:flex;flex-direction:column;align-items:stretch;gap:25px;padding-top:125px;padding-bottom:65px}.hero.holiday-active .hero-copy{width:100%}.hero.holiday-active h1{font-size:clamp(49px,12vw,78px)}.hero.holiday-active .holiday-overlay{width:100%;margin:0}}
 </style>
+<style id="holiday-photographic-garland">
+/* Photographic transparent PNG: visually draped in the room, never in front of navigation. */
+.hero.holiday-active .holiday-garland-photo{position:absolute;z-index:2;top:0;left:0;width:100%;height:clamp(125px,16vw,230px);pointer-events:none;background-image:url('../assets/holiday/anchor-evergreen-garland-2026.png');background-repeat:no-repeat;background-size:100% auto;background-position:center top;filter:drop-shadow(0 8px 9px rgba(0,0,0,.24));}
+.hero.holiday-active .hero-inner{position:relative;z-index:3}
+@media(max-width:700px){.hero.holiday-active .holiday-garland-photo{height:105px;background-size:auto 105px;background-position:center top;opacity:.92}}
+</style>
 </head>
 <body>
 <header><div class="doc mast">
@@ -183,7 +189,7 @@ document.addEventListener('submit', function (event) {
   <div class="mast-actions"><a class="mast-phone js-phone" href="tel:+16034202430">(603) 420-2430</a><a class="btn btn-gold" href="#quote">Check Cleaning Availability</a></div>
 </div></header>
 <main>
-  <section class="hero holiday-active" id="top"><div class="doc hero-inner"><div class="hero-copy">
+  <section class="hero holiday-active" id="top"><div class="holiday-garland-photo" aria-hidden="true"></div><div class="doc hero-inner"><div class="hero-copy">
     <div class="eyebrow light reveal">House cleaning services · Greater Manchester, NH</div><h1 class="reveal">House Cleaning <em>Services.</em></h1><p class="hero-lede reveal">Weekly, biweekly &amp; monthly house cleaning for Bedford and Greater Manchester homes.</p>
     <div class="hero-actions reveal"><a class="btn btn-gold" href="#quote">Check Cleaning Availability</a><a class="btn btn-quiet" href="#recurring">Explore Residential Services</a></div>
     <div class="hero-note reveal" aria-label="Service highlights"><span>Bedford &amp; Greater Manchester</span><span>Recurring service first</span><span>Local owner accountability</span></div>
