@@ -158,6 +158,11 @@ document.addEventListener('submit', function (event) {
 @media(max-width:800px){.holiday-decor{height:85px}.holiday-overlay{padding:17px 17px;margin:12px 0 22px}.holiday-overlay h2{font-size:31px}.holiday-overlay p{font-size:13px}}
 @media(prefers-reduced-motion:reduce){.holiday-overlay *{animation:none!important}}
 </style>
+<style id="holiday-visibility-fix">
+.hero.holiday-active .holiday-overlay{display:block!important;visibility:visible!important;opacity:1!important;height:auto!important;min-height:0!important;overflow:visible!important}
+.hero.holiday-active .holiday-overlay > *{display:block;visibility:visible!important;opacity:1!important;transform:none!important}
+.hero.holiday-active .holiday-overlay .holiday-cta{display:inline-block!important}
+</style>
 <style id="anchor-holiday-layout-fix">
 .hero.holiday-active{background-size:cover;background-position:center center;min-height:100svh}
 .hero.holiday-active .hero-inner{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(340px,.9fr);align-items:center;gap:clamp(22px,3vw,50px);min-height:100svh;padding-top:160px;padding-bottom:94px}
